@@ -6,16 +6,32 @@ import 'package:jogo_do_bicho/shared/themes/app_colors.dart';
 import 'package:jogo_do_bicho/shared/themes/app_images.dart';
 import 'package:jogo_do_bicho/shared/widgets/InputText/input_text_widget.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class RegisterPage extends StatelessWidget {
+  const RegisterPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    // final size = MediaQuery.of(context).size;
     return Scaffold(
-      // appBar: const CupertinoNavigationBar(
-      //   middle: Text('Login'),
-      // ),
+      appBar: CupertinoNavigationBar(
+          backgroundColor: AppColors.background,
+          middle: const Text(
+            'Register',
+            style: TextStyle(
+              color: AppColors.foreground,
+              fontSize: 20,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+          leading: IconButton(
+            icon: const Icon(
+              CupertinoIcons.back,
+              color: AppColors.foreground,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          )),
       body: Container(
         color: AppColors.background,
         child: Container(
@@ -29,22 +45,15 @@ class LoginPage extends StatelessWidget {
           child: ListView(children: <Widget>[
             Column(
               children: [
-                Container(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: (0), vertical: (size.height * 0.1)),
-                  child: SvgPicture.asset(
-                    AppImages.logo,
-                    width: size.width * 0.6,
-                  ),
-                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 26),
                   child: Column(
                     children: [
+                      const SizedBox(height: 60),
                       Container(
                         alignment: Alignment.centerLeft,
                         child: const Text(
-                          'Login',
+                          'Register',
                           style: TextStyle(
                             fontSize: 26,
                             fontWeight: FontWeight.w500,
@@ -59,14 +68,23 @@ class LoginPage extends StatelessWidget {
                         label: 'Password',
                         password: true,
                       ),
+                      const SizedBox(height: 56),
+                      const InputTextWidget(
+                        label: 'Confirm password',
+                        password: true,
+                      ),
+                      const SizedBox(height: 56),
+                      const InputTextWidget(label: "Email"),
+                      const SizedBox(height: 56),
+                      const InputTextWidget(label: "Confirm email"),
                       const SizedBox(height: 60),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () => Navigator.pop(context),
                             child: const Text(
-                              "Don't have an account?",
+                              "Already have an account?",
                               style: TextStyle(
                                 color: AppColors.foreground,
                                 fontWeight: FontWeight.w300,
