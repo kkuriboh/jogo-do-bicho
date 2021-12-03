@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jogo_do_bicho/pages/login/login.dart';
+import 'package:jogo_do_bicho/pages/login/login_page.dart';
 import 'package:jogo_do_bicho/pages/register/register_page.dart';
 
 class RouteGenerator {

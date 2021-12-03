@@ -3,6 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:jogo_do_bicho/shared/themes/app_colors.dart';
 import 'package:jogo_do_bicho/shared/themes/app_images.dart';
+import 'package:jogo_do_bicho/shared/utils/get_screen_percentage.dart';
+import 'package:jogo_do_bicho/shared/widgets/ConfirmButton/confirm_button.dart';
 import 'package:jogo_do_bicho/shared/widgets/InputText/input_text_widget.dart';
 
 class LoginPage extends StatelessWidget {
@@ -11,6 +13,8 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final hSixty = getScreenPercentage(size, 60, false);
+    // final hFiftySix = getScreenPercentage(size, 56, false);
     return Scaffold(
       body: Container(
         color: AppColors.background,
@@ -34,7 +38,8 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 26),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: getScreenPercentage(size, 26, true)),
                   child: Column(
                     children: [
                       Container(
@@ -48,14 +53,14 @@ class LoginPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 60),
+                      SizedBox(height: hSixty),
                       const InputTextWidget(label: 'Username'),
-                      const SizedBox(height: 56),
+                      SizedBox(height: getScreenPercentage(size, 56, false)),
                       const InputTextWidget(
                         label: 'Password',
                         password: true,
                       ),
-                      const SizedBox(height: 60),
+                      SizedBox(height: hSixty),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -63,41 +68,17 @@ class LoginPage extends StatelessWidget {
                             onPressed: () {
                               Navigator.of(context).pushNamed('/register');
                             },
-                            child: const Text(
+                            child: Text(
                               "Don't have an account?",
                               style: TextStyle(
                                 color: AppColors.foreground,
                                 fontWeight: FontWeight.w300,
-                                fontSize: 12,
+                                fontSize: size.width <= 360 ? 10 : 12,
                                 decoration: TextDecoration.underline,
                               ),
                             ),
                           ),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 8,
-                              horizontal: 52,
-                            ),
-                            decoration: const BoxDecoration(
-                              color: AppColors.brWhite,
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(4),
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0x337AA2F7),
-                                  blurRadius: 1,
-                                  spreadRadius: 1,
-                                  offset: Offset(1, 1),
-                                ),
-                              ],
-                            ),
-                            child: SvgPicture.asset(
-                              AppImages.arrow,
-                              width: 24,
-                              height: 24,
-                            ),
-                          ),
+                          ConfirmButtonWidget(size: size)
                         ],
                       )
                     ],

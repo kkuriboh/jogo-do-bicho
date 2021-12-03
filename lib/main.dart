@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jogo_do_bicho/route_generator.dart';
-import 'pages/login/login.dart';
+import 'pages/login/login_page.dart';
 
 void main() {
   runApp(const MyApp());
